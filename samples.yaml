@@ -1,0 +1,17 @@
+# サンプル情報
+# ハイフンによりリストの要素として格納できる
+samples:
+  sample1:
+    - "data/sample1_R1.fastq.gz"
+    - "data/sample1_R2.fastq.gz"
+  sample2:
+    - "data/sample2_R1.fastq.gz"
+    - "data/sample2_R2.fastq.gz"
+  # 必要に応じてサンプルを追加
+
+
+
+# その他の設定
+# configfileに設定すると、全体で共通のパラメータになる
+# threads: 8
+# output_dir: "QualityCheck"
