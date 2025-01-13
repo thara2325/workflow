@@ -28,8 +28,15 @@ rule fastqc:
         R2_zip="fastqc/{sample}_R2_fastqc.zip"
     threads: 4
     shell:
+        # shell で docker run を直接叩く
+    shell:
         """
-        fastqc {input.R1} {input.R2} \
-               --threads {threads} \
-               --outdir fastqc
+        docker run --rm \
+            -v $(pwd):/work \
+            -w /work \
+            biocontainers/fastqc:v0.11.9_cv8 \
+            fastqc {input.R1} {input.R2} \
+                   --threads {threads} \
+                   --outdir fastqc \
+                   --nogroup
         """
