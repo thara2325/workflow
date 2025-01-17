@@ -2,11 +2,14 @@
 # ハイフンによりリストの要素として格納できる
 samples:
   sample1:
-    - "data/sample1_R1.fastq.gz"
-    - "data/sample1_R2.fastq.gz"
-  sample2:
-    - "data/sample2_R1.fastq.gz"
-    - "data/sample2_R2.fastq.gz"
+    reads:
+      R1: "data/sample1_R1.fastq.gz"
+      R2: "data/sample1_R2.fastq.gz"
+    platform: Illumina
+    species: human
+    group: control
+    library_type: paired-end
+    
   # 必要に応じてサンプルを追加
 
 
