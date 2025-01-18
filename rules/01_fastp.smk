@@ -17,8 +17,8 @@ rule fastp:
         R1=lambda wc: config["samples"][wc.sample]["reads"]["R1"],
         R2=lambda wc: config["samples"][wc.sample]["reads"]["R2"]
     output:
-        R1="data/fastp/{sample}_R1.fastq.gz",
-        R2="data/fastp/{sample}_R2.fastq.gz",
+        R1="results/fastp/{sample}_R1.fastq.gz",
+        R2="results/fastp/{sample}_R2.fastq.gz",
         html="results/fastp/{sample}_fastp.html",
         json="results/fastp/{sample}_fastp.json"
     conda:
