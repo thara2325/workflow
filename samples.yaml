@@ -10,6 +10,11 @@ samples:
     group: control
     library_type: paired-end
     
+
+
+
+
+reference: "ref/genome.fasta"
   # 必要に応じてサンプルを追加
 
 
