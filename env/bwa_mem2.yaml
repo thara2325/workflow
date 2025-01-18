@@ -7,6 +7,26 @@ channels:
   - https://repo.anaconda.com/pkgs/r
 dependencies:
   - bwa-mem2=2.2.1=hdf58011_5
+  - bzip2=1.0.8=hfdf4475_7
+  - c-ares=1.34.4=hf13058a_0
+  - ca-certificates=2024.12.14=h8857fd0_0
+  - htslib=1.21=hec81eee_0
+  - krb5=1.21.3=h37d8d59_0
+  - libcurl=8.8.0=hf9fcc65_1
   - libcxx=19.1.5=hf95d169_0
+  - libdeflate=1.23=he65b83e_0
+  - libedit=3.1.20240808=pl5321ha958ccf_0
+  - libev=4.33=h10d778d_2
+  - liblzma=5.6.3=hd471939_1
+  - liblzma-devel=5.6.3=hd471939_1
+  - libnghttp2=1.58.0=h64cf6d3_1
+  - libssh2=1.11.0=hd019ec5_0
   - libzlib=1.2.13=h87427d6_6
+  - ncurses=6.5=h0622a9a_2
+  - openssl=3.4.0=hc426f3f_1
+  - samtools=1.21=h94387ee_0
+  - xz=5.6.3=h357f2ed_1
+  - xz-gpl-tools=5.6.3=h357f2ed_1
+  - xz-tools=5.6.3=hd471939_1
+  - zstd=1.5.6=h915ae27_0
 prefix: /opt/anaconda3/envs/bwa-mem2
