@@ -3,10 +3,12 @@
 # YAMLファイルの読み込み
 configfile: "samples.yaml"
 
-rule all:
+""" rule all:
     input:
         expand("results/qc/{sample}_R1_fastqc.html", sample=config["samples"].keys()),
         expand("results/qc/{sample}_R2_fastqc.html", sample=config["samples"].keys())
+"""
+
 
 
 
