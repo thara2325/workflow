@@ -4,13 +4,13 @@
 configfile: "samples.yaml"
 
 
-rule all:
+"""rule all:
     input:
         expand("data/fastp/{sample}_R1.fastq.gz", sample=config["samples"].keys()),
         expand("data/fastp/{sample}_R2.fastq.gz", sample=config["samples"].keys()),
         expand("results/fastp/{sample}_fastp.html", sample=config["samples"].keys()),
         expand("results/fastp/{sample}_fastp.json", sample=config["samples"].keys())
-
+"""
 
 rule fastp:
     input:
@@ -22,7 +22,7 @@ rule fastp:
         html="results/fastp/{sample}_fastp.html",
         json="results/fastp/{sample}_fastp.json"
     conda:
-        "env/conda_env250117.yml"
+        "~/bioinfo/WGS/snakamake-env/env/conda_env250117.yaml"
     threads: 4
     shell:
         """
