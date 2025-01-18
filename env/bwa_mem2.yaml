@@ -1,0 +1,12 @@
+name: bwa-mem2
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - bwa-mem2=2.2.1=hdf58011_5
+  - libcxx=19.1.5=hf95d169_0
+  - libzlib=1.2.13=h87427d6_6
+prefix: /opt/anaconda3/envs/bwa-mem2
