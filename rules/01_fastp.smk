@@ -21,6 +21,8 @@ rule fastp:
         R2="data/fastp/{sample}_R2.fastq.gz",
         html="results/fastp/{sample}_fastp.html",
         json="results/fastp/{sample}_fastp.json"
+    conda:
+        "env/conda_env250117.yml"
     threads: 4
     shell:
         """
