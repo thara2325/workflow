@@ -12,15 +12,13 @@ rule bwa_index:
     input:
         ref=config["reference"]
     output:
-        directory("data/ref")
+        directory("ref")
     threads: 2
     conda:
         # bwa-mem2入りのconda環境を指定
-        "~/bioinfo/WGS/snakamake-env/env/bwa_mem2.yaml"
+        "../env/bwa_mem2.yaml"
     shell:
-        """
-        bwa-mem2 index {input.ref}
-        """
+        "bwa-mem2 index {input.ref}"
 
 rule bwa_mem2:
     """
@@ -38,19 +36,20 @@ rule bwa_mem2:
     threads: 4
     log:
         "logs/bwa_mem2/{sample}.log"
-
+    params:
+        rg=lambda wildcards: (
+            f"@RG\\tID:{wildcards.sample}\\tSM:{wildcards.sample}\\tPL:{config['samples'][wildcards.sample]['platform']}\\t"
+            f"LB:{config['samples'][wildcards.sample]['library_type']}\\tPU:{config['samples'][wildcards.sample]['group']}\\t"
+            f"CN:{config['samples'][wildcards.sample]['species']}"
+        )
+    conda:
+        "../env/bwa_mem2.yaml"
     shell:
         """
-        # --------------------------------------------------------
-        # ここで、YAMLの各フィールドからRead Groupタグ(RG)を組み立てる
-        # @RG\tID:... \tSM:... \tPL:... \tLB:... \tPU:... など
-        # --------------------------------------------------------
-        RG="@RG\\tID:{wildcards.sample}\\tSM:{wildcards.sample}\\tPL:{config['samples'][wildcards.sample]['platform']}\\tLB:{config['samples'][wildcards.sample]['library_type']}\\tPU:{config['samples'][wildcards.sample]['group']}\\tCN:{config['samples'][wildcards.sample]['species']}"
-
-        # -R で RG 情報を指定し、BWA-MEM2 -> samtools sort -> samtools index の流れ
-        bwa-mem2 mem -t {threads} -R "$RG" {input.ref} {input.R1} {input.R2} 2> {log} \
+        bwa-mem2 mem -t {threads} -R "{params.rg}" {input.ref} {input.R1} {input.R2} 2> {log} \
+        | samtools view -@ {threads} -bS - \
         | samtools sort -@ {threads} -o {output.bam} -
-        samtools index -@ {threads} {output.bam} {output.bai}
+        samtools index {output.bam} {output.bai}
         """
 
 # (オプション) このファイル単独をテストするとき用の rule all
