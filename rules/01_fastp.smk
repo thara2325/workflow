@@ -22,7 +22,7 @@ rule fastp:
         html="results/fastp/{sample}_fastp.html",
         json="results/fastp/{sample}_fastp.json"
     conda:
-        "~/bioinfo/WGS/snakamake-env/env/conda_env250117.yaml"
+        "../env/conda_env250117.yaml"
     threads: 4
     shell:
         """

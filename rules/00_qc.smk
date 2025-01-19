@@ -20,7 +20,7 @@ rule fastqc:
         "results/qc/{sample}_R1_fastqc.html",
         "results/qc/{sample}_R2_fastqc.html"
     conda:
-        "~/bioinfo/WGS/snakemake-env/env/conda_env250117.yaml"
+        "../env/conda_env250117.yaml"
     threads:4
     shell: 
         """
